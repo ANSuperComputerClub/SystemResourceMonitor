@@ -20,6 +20,8 @@ public class CpuController {
 
     @GetMapping("diagnostic")
     public String cpuDiagnostics() throws SensorNotFoundException {
-        return service.checkSensors();
+        var res = service.checkSensors();
+        System.out.println(res);
+        return res;
     }
 }

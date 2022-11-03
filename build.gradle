@@ -13,6 +13,7 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    all*.exclude module : 'spring-boot-starter-logging'
 }
 
 repositories {
@@ -29,6 +30,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'com.profesorfalken:jSensors:2.2.1'
+
 
 }
 

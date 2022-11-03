@@ -4,7 +4,6 @@ import com.profesorfalken.jsensors.JSensors;
 import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Cpu;
 import com.profesorfalken.jsensors.model.sensors.Fan;
-import com.profesorfalken.jsensors.model.sensors.Temperature;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class ResourceService {
      * @throws SensorNotFoundException when it can't find any CPUs
      */
     public String checkSensors() throws SensorNotFoundException {
-        StringBuilder output = new StringBuilder();
+        var output = new StringBuilder();
         List<Cpu> cpus = components.cpus;
         if(cpus == null) throw new NoCpuSensorFoundException();
         for(final Cpu cpu: cpus) {
@@ -31,9 +30,9 @@ public class ResourceService {
             output.append(("Sensors: ") + "\n");
 
             //Print temperatures
-            List<Temperature> temps = cpu.sensors.temperatures;
-            for (final Temperature temp : temps) {
-                output.append(temp.name).append(": ").append(temp.value).append(" C").append("\n");
+            var loads = cpu.sensors.loads;
+            for (var load : loads) {
+                output.append(load.name).append(": ").append(load.value).append(" C").append("\n");
             }
 
             //Print fan speed
